@@ -1,0 +1,443 @@
+:root {
+    --bs-primary: #2a9d8f;
+    --bs-secondary: #264653;
+    --bs-success: #38b000;
+    --bs-info: #90e0ef;
+    --bs-warning: #ffd60a;
+    --bs-danger: #e76f51;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+}
+
+/* Navbar ve buton stilleri */
+.navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+    transform: translateY(-1px);
+}
+
+/* Tab stilleri */
+.nav-tabs {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-tabs .nav-link {
+    color: #666;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-tabs .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--bs-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--bs-primary);
+    background: transparent;
+    border: none;
+}
+
+.nav-tabs .nav-link.active::after {
+    transform: scaleX(1);
+}
+
+/* İçerik alanı */
+#blocklyDiv {
+    height: calc(100vh - 180px);
+    width: 100%;
+    background: white;
+}
+
+#codeOutput {
+    height: calc(100vh - 180px);
+    width: 100%;
+    overflow: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    background: #f8f9fa;
+    border: none;
+}
+
+/* Blockly özelleştirmeleri */
+.blocklyToolboxDiv {
+    background-color: #fff !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.blocklyTreeRow {
+    padding: 8px !important;
+    margin: 4px 0 !important;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+    height: auto !important;
+    line-height: 20px !important;
+}
+
+.blocklyTreeRow:hover {
+    background-color: rgba(42, 157, 143, 0.1) !important;
+}
+
+/* Kategori satırı düzeltmeleri */
+.blocklyTreeRow {
+    padding: 8px !important;
+    margin: 4px 0 !important;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+    height: auto !important;
+    line-height: 20px !important;
+}
+
+/* Kategori etiket hizalaması */
+.blocklyTreeLabel {
+    vertical-align: middle !important;
+    line-height: 20px !important;
+    padding-left: 4px !important;
+}
+
+/* Kategori ikon hizalaması */
+.blocklyTreeIcon {
+    vertical-align: middle !important;
+    line-height: 20px !important;
+}
+
+/* Özel scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bs-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--bs-secondary);
+}
+
+/* Animasyonlar */
+.fade-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+/* Duyarlı tasarım */
+@media (max-width: 768px) {
+    .navbar .d-flex {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .nav-tabs .nav-link {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Kod görüntüleme alanı stilleri */
+.code-container {
+    background: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: #2d2d2d;
+    border-bottom: 1px solid #3d3d3d;
+}
+
+.file-name {
+    color: #e0e0e0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.code-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.code-actions button {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.85rem;
+    color: #e0e0e0;
+    background: transparent;
+    border: 1px solid #4d4d4d;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.code-actions button:hover {
+    background: #3d3d3d;
+    border-color: #5d5d5d;
+}
+
+#codeOutput {
+    margin: 0;
+    padding: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    background: #000000;
+    color: #ffffff;
+    border-radius: 0 0 8px 8px;
+    max-height: calc(100vh - 200px);
+    overflow: auto;
+}
+
+/* Prism.js özelleştirmeleri */
+.line-numbers .line-numbers-rows {
+    border-right: 1px solid #3d3d3d;
+    padding: 1rem 0;
+}
+
+.line-numbers-rows > span:before {
+    color: #858585;
+}
+
+/* Scrollbar stilleri */
+#codeOutput::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+#codeOutput::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+#codeOutput::-webkit-scrollbar-thumb {
+    background: #4d4d4d;
+    border-radius: 4px;
+}
+
+#codeOutput::-webkit-scrollbar-thumb:hover {
+    background: #5d5d5d;
+}
+
+/* Kod renklendirme özelleştirmeleri */
+.token.comment {
+    color: #6a9955 !important;
+}
+
+.token.string {
+    color: #ce9178 !important;
+}
+
+.token.number {
+    color: #b5cea8 !important;
+}
+
+.token.keyword {
+    color: #569cd6 !important;
+}
+
+.token.function {
+    color: #dcdcaa !important;
+}
+
+.token.class-name {
+    color: #4ec9b0 !important;
+}
+
+.token.operator {
+    color: #d4d4d4 !important;
+}
+
+.token.punctuation {
+    color: #d4d4d4 !important;
+}
+
+.token.property {
+    color: #9cdcfe !important;
+}
+
+.token.variable {
+    color: #9cdcfe !important;
+}
+
+/* Satır numaraları için stil */
+.line-numbers-rows > span:before {
+    color: #858585 !important;
+}
+
+/* Seçili metin için stil */
+#codeOutput ::selection {
+    background-color: #264f78;
+    color: #ffffff;
+}
+
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 500px;
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 12px;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.notification.error {
+    background: linear-gradient(to right, #ff4444, #ff6b6b);
+    color: white;
+}
+
+.notification.success {
+    background: linear-gradient(to right, #00C851, #00E676);
+    color: white;
+}
+
+.notification-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.notification-header i {
+    font-size: 1.2em;
+}
+
+.notification-header span {
+    flex: 1;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.copy-error-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.copy-error-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.notification-details {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 15px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.notification-details::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notification-details::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.notification-details::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.notification-details::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .notification {
+        width: 400px;
+        right: 15px;
+        bottom: 15px;
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .notification {
+        width: calc(100% - 30px);
+        right: 15px;
+        bottom: 15px;
+        padding: 12px;
+    }
+}

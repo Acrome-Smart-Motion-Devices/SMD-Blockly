@@ -1,0 +1,6 @@
+flask
+flask-cors
+PyQt5
+PyQtWebEngine
+acrome-smd
+pyserial
